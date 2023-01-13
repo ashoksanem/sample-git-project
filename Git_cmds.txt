@@ -175,7 +175,7 @@ git show <commit hash> ---> it shows the changes made in the files in that pictu
 git commit --amend ---------> this cmd used when you had made some mistakes in the file & accidentally commited it & you want make the corrections with out new commit or you want to append this new changes to previous commit
                           1. make necessary corrections in the file you want to do, now the file will be in working/modified state 
                           2. move the file to staging (git add .)
-                          3. now perform git commit --ammend this will open the interactive terminal where previous commit message will be shown, if you want to change the commit msg then change it else keep it same
+                          3. now perform "git commit --amend" this will open the interactive terminal where previous commit message will be shown, if you want to change the commit msg then change it else keep it same
                              so that you can observe this new file changes will be appended or added to previous commit with out performing new commit with the commit msg you have given  
 
 ---------------------------cherry pick-------------------------------------------------------------------------------------------------------------------------------------
@@ -468,5 +468,10 @@ git --set-upstream origin <branch>  --------> works same as above
 once we set upstream using -u option , when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push origin feature-1"
 
 git push -u origin  feature-1:master -------->  we can push & set upstream of one branch in loacl to other branch in master. Here we pushed & set upstream b/w "local feature-1" branch & "remote master" so now when ever we do "git push" in "local feature-1" branch all the commits will be pushed to "remote master" branch.
-                      local   remote   
+                     local    remote
+
+git clone <remote url> -------> to clone remote repo to local
+
+By default when we create any repo in github a empty repo will be created without any branches, but when we add "ReadME file" while creating repo in github, a branch with the name "main" consisting with one single commit will be created which also know as "master branch". 
+if you want you can set any desired branch in your github repo as main/default, it can be done in settings section under Branches tab of repo.
   
