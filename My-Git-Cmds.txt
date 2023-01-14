@@ -92,11 +92,11 @@ git cat-file 3ba8ba28eacb53fe983fee39298e4d5f88e4087a  -p  -----> to read the co
 
 git mv  <old_file_name>   <new_file_name>  -----> to rename file, after rename git automatically move new renamed file to staging
                                                                     or 
-git mv  ./<old_file_name>   dir/<new_file_name>  -----> to move a file from one location to other within same repository without making any changes in it.after moving git directely move the file to staging
+git mv  ./<old_file_name>   dir/<new_file_name>  -----> to move a file from one location to other within same repository without making any changes in it.after moving git directely move                                                         the file to staging
 
 git restore --staged <file>  ----> to unstage, Git automatically move file from staging to working state
 
-git restore <file> ----> to undo from working state, Git automatically move file from working state/modified/untracked to normal. All the changes made on the file in working state will be reverted  
+git restore <file> ----> to undo from working state, Git automatically move file from working state/modified/untracked to normal. All the changes made on the file in working state will be                          reverted  
 
 git checkout -b <new branch name> -----> to create new branch & to enter into that newly created branch
 
@@ -116,9 +116,9 @@ git branch -m <old_branch_name>  <new_branch_name>  -----> to rename the branch
 
 git branch -m <new_branch> -----> to rename current working branch 
 
-git branch -d  <branch_name> -----> to delete branch, remember you cannot delete the current working branch. in order to delete first you have to move to some other branch & later perform branch delete you wished
-                                    Note: Dont delete the branch if you have commits in it, if you do that the Head will reffer to detached Head which is not recomemded for this to achive first you have to merge 
-                                          the branch with other (master) or create a new branch & merge with it & later perform branch delete 
+git branch -d  <branch_name> -----> to delete branch, remember you cannot delete the current working branch. in order to delete first you have to move to some other branch & later perform                                     branch delete you wished
+                                    
+Note: Dont delete the branch if you have commits in it, if you do that the Head will reffer to detached Head which is not recomemded for this to achive first you have to merge the branch with other (master) or create a new branch & merge with it & later perform branch delete 
 
 git branch -D  <branch_name> -----> forcefully delete branch
  
@@ -130,28 +130,25 @@ if we want to merge Source into Target
    - git merge feature-1 (then files in the source will get merged into master & Head will be pointed towards master, in simple master will contain both the files of source & target)  
 
 Merge Types:
-Fast Forward Merge - when Target or Source any one doesnt have any new commits (or) its clear without any merge conflicts (or) the branch doesnt contain any commits/empty branch then Fast Forward merge will be performed automatically  
+Fast Forward Merge - when Target or Source any one doesnt have any new commits (or) its clear without any merge conflicts (or) the branch doesnt contain any commits/empty branch then Fast                      Forward merge will be performed automatically  
 
 Recursive Merge - just oppsite to Fast Forward merge
 
 
-if Target = master  has new commits &  Source = feature-1  with old commits, in this case master is few steps ahead compared with source
-    then if we perform "git merge master" by checking into Source in this case git performs Fast Forward Merge & Head will pointed to master but not to Source because Master has lastet commits when compared with Source 
-    if both branches has latest commits then Recursive Merge will be occured & Head will be pointed to master as expected.
+if Target = master  has new commits &  Source = feature-1  with old commits, in this case master is few steps ahead compared with source then if we perform "git merge master" by checking into Source in this case git performs Fast Forward Merge & Head will pointed to master but not to Source because Master has lastet commits when compared with Source if both branches has latest commits then Recursive Merge will be occured & Head will be pointed to master as expected.
 
 git merge conflicts arrised when you have modified & commited same files & same lines in the file in two different branches (Target, Source) then merge conflicts occur 
 at that time git merge the contents of the file & will keep the files as modified in working state,same time we have to edit the files & decied which lines has to be retained,deleted after that we have to commit that file after staging, then it results to succesfull merge
 
  
-git merge --abort ---> this cmd generally used to abort merge, recommended to use in merge conflicts , this cmd doesnt work/effecte when you have to abort as succesfull merge, because when we check git log at that moment git will point its HEAD both towards merged branches resulting that it cannot decide on which branch the operation/cmd has to be executed & thus fails   
-                       when merge conflicts arrises use this cmd to cancel/abort that merge, then edit files & do your corrections/modifications in the files & commit them in their respective branches & then perform merge this time make sure that merge conflicts should not arrises during merging of branches 
+git merge --abort ---> this cmd generally used to abort merge, recommended to use in merge conflicts , this cmd doesnt work/effecte when you have to abort as succesfull merge, because when                        we check git log at that moment git will point its HEAD both towards merged branches resulting that it cannot decide on which branch the operation/cmd has to be                             executed & thus fails when merge conflicts arrises use this cmd to cancel/abort that merge, then edit files & do your corrections/modifications in the files & commit                        them in their respective branches & then perform merge this time make sure that merge conflicts should not arrises during merging of branches 
 
 ------------------Git Rebase-------------------------------------------------------------------------------------------------------------------------
 Target = master Source = feature-1
 
-- Rebase uses merge strategy, if you apply rebase on a branch (git rebase feature-1) then it will apply commits of one branch on top of the commits of other branch as its own branch commits
-- in the case git rebase feature-1, master branch commits will be moved on the top followed by feature-1, when we check git log in master we can see the commmits of master first, followed by 
-  feature-1 branch commits combiend in master as its own commits.
+- Rebase uses merge strategy, if you apply rebase on a branch (git rebase feature-1) then it will apply commits of one branch on top of the commits of other branch as its own branch   commits
+- in the case git rebase feature-1, master branch commits will be moved on the top followed by feature-1, when we check git log in master we can see the commmits of master first, followed   by feature-1 branch commits combiend in master as its own commits.
+  
 - Rebase is used to clean up loacal commit histoy
 - Rebase doesnt preserve history whereas Merge does
 - cleaning up your commits before sharing your branch, pulling changes from other branch without mearge are the  common places to use REBASE
@@ -165,9 +162,8 @@ Hints when conflicts arises
       hint: You can instead skip this commit: run "git rebase --skip".
       hint: To abort and get back to the state before "git rebase", run "git rebase --abort" 
 
---git rebase -i <hash code of commit>  
-  - its an interactive rebase where we can merge the all the commits into single commit, generally used to cleanup the commit history of the same branch before merging into MASTER
-
+git rebase -i <hash code of commit> ---> its an interactive rebase where we can merge the all the commits into single commit, generally used to cleanup the commit history of the same                                          branch before merging into MASTER
+ 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 git show <commit hash> ---> it shows the changes made in the files in that pictular commit
@@ -201,24 +197,28 @@ Hints when conflicts arises
   hint: run "git cherry-pick --abort".
 
 ------------------------------------------------DETACHED HEAD---------------------------------------------------------------------------------------------------------------
-1.generall git head points to branch & its pictular latest commit 
-2.when we move to pictular commit "git checkout <commit hash code>" it becomes detached head & all the further commits made here will be in detached state which is dangerous 
-3.so at this point to slove/over come issue, move to latest commit in detached state & create a branch there using "git branch <new branch>" then execute "git checkout <new branch>" so that now all the commits in detached head will be pointed to this new branch
-4.now go to your preffered branch lets say "git checkout master" now apply "git merge or rebase". you can apply cherry pick too
-5.delete newly created branch if you feel its unnecessary.
+1. generall git head points to branch & its pictular latest commit 
+
+2. when we move to pictular commit "git checkout <commit hash code>" it becomes detached head & all the further commits made here will be in detached state which is dangerous 
+
+3. so at this point to slove/over come issue, move to latest commit in detached state & create a branch there using "git branch <new branch>" then execute "git checkout <new branch>" so       that now all the commits in detached head will be pointed to this new branch
+
+4. now go to your preffered branch lets say "git checkout master" now apply "git merge or rebase". you can apply cherry pick too
+
+5. delete newly created branch if you feel its unnecessary.
 
 -----------------------------------------------------------CHEKOUT-----------------------------------------------------------------------------------------------------------
 git checkout -   ---> previously where the HEAD present it will move to that position
-                      suppose if you move to pictular commit(in same branch) or other branch from master if you execute cmd "git checkout -" then HEAD will move to master or pervious commit which was its previous state
+                      suppose if you move to pictular commit(in same branch) or other branch from master if you execute cmd "git checkout -" then HEAD will move to master or pervious                       commit which was its previous state/postion
 
 
-git checkout HEAD~2 ----> suppose you are in master branch latest commit and HEAD is also pointed to master branch latest commit. if you want to move you head to previous second commit in same master branch then execute "git checkout HEAD~2" 
+git checkout HEAD~2 ----> suppose you are in master branch latest commit and HEAD is also pointed to master branch latest commit. if you want to move you head to previous second commit in                           same master branch then execute "git checkout HEAD~2" 
                           similarly you can move to 1...or 3/4.. commmits behind using this cmd 
                           you can use "git checkout -" or "git checkout master" to move back to previous same commit in master
 
-git checkout head <file name> ----> suppose if you have made changes in two files so that those are moved to working area now you want to revert back or remove those changes in pictular one single file then use cmd "git checkout head <file name>"
-       or                           so that changes made in that file will be removed & set file into its previous commit but the other second file will be in same working area. This same cmd also used to revert back or remove the file changes which are in staging area.
-git checkout -- <file name>                           
+git checkout head <file name> ----> suppose if you have made changes in two files so that those are moved to working area now you want to revert back or remove those changes in pictular                                     one single file then use cmd "git checkout head <file name>", so that changes made in that file will be removed & set file into its previous commit but            (or)                     the other second file will be in same working area.This same cmd also used to revert back or remove the file changes which are in staging area.
+                                   
+git checkout -- <file name>  ---->  works same as above                       
                                 
 
 git reset head --hard  ---->    if you want to revert back or remove all the changes in all files which are in working or staging area at single shot use cmd "git reset head --hard"
@@ -226,17 +226,13 @@ git reset head --hard  ---->    if you want to revert back or remove all the cha
  
 
 
-git restore --source HEAD~2 <file name> ----> if you have commited a file & repo is clean, now you want to revert/apply the same changes of that file which was two commits behind (for exaple)use this cmd, so that same changes happend in behind 2 commits on that file now it will be applied on the files & keep them in present working area
-                                              similarly you can apply/revert same files changes happend 1...or 3/4.. commmits behind can be applied on the files & keep them in present working area
-
+git restore --source HEAD~2 <file name> ----> if you have commited a file & repo is clean, now you want to revert/apply the same changes of that file which was two commits behind
+                                              (for exaple)use this cmd, so that same changes happend in behind 2 commits on that file now it will be applied on the files & keep them in                                                   present working area.similarly you can apply/revert same files changes happend 1...or 3/4.. commmits behind can be applied on the files &                                                    keep them in present working area
 
 
 git switch <branch name> ----> to move to another branch just like "git checkout <branch name>"
 
 git switch -c <new branch name> ----> to create new brach & to move on it
-
-
-
 
 
 -------------------------------------------------GIT RESET----------------------------------------------------------------------------------------------------------------------- 
@@ -271,16 +267,17 @@ suppose we have 4commits
 git reset head --hard  ----> this cmd delets the file changes whether they are in working or staging area & moves the head to previous latest commit
  
 -------------------------------------------------GIT STASH----------------------------------------------------------------------------------------------------------------------- 
-- When you have did some changes in files & they are in working area at that point git will not let you to switch branch when you are working on same files which exists in other branch too which you wnat to switch
-- When you did changes in different files which do not exist in other branch which you wnat to switch at that point git will allow you to switch branch but the file changes made in previous branch which are in working area will be carried to the branch which you swiched currently 
+- When you have did some changes in files & they are in working area at that point git will not let you to switch branch when you are working on same files which exists in other branch too   which you wnat to switch
+
+- When you did changes in different files which do not exist in other branch which you wnat to switch at that point git will allow you to switch branch but the file changes made in   previous branch which are in working area will be carried to the branch which you swiched currently 
 - To over come this problem we use cmd "git stash"
+
 - once you save the file chages which are in workig area into stash that changes will not be visible in workig area or when you do "cat <file>" untill you apply or pop the stash
-- suppose if you stash some file changes in feature branch and move to master still you can list the saved stash on master branch & apply them on master branch using "stash apply or pop" if its necessary
-- merge conflicts also arises while you apply or pop the stash, you have to fix them & commit it. once the merge conflicts are fixed generally the file changs will be in workig area that pictular file changes cannot be stashed again you have to commit/stage them
--once we do stash pop/apply the file changes will be applied & moved to working area again you cannot stash the same file changes, you have stage/commit them 
 
+- suppose if you stash some file changes in feature branch and move to master still you can list the saved stash on master branch & apply them on master branch using "stash apply or pop"   if its necessary
+- merge conflicts also arises while you apply or pop the stash, you have to fix them & commit it. once the merge conflicts are fixed generally the file changs will be in workig area that   pictular file changes cannot be stashed again you have to commit/stage them
 
-
+- once we do stash pop/apply the file changes will be applied & moved to working area again you cannot stash the same file changes, you have stage/commit them 
 
 git stash ----> saves,moves the file changes which are in working area into stash list & let you to switch branch. remember each stash will be saved with unique stash id 
 
@@ -288,11 +285,12 @@ git stash save "<your stash comment>" ----> smilar to cmd "git stash" but you ca
 
 git stash list ----> to list all the stash's we saved (stash ID's , on whcih branch we made this pictular stash & comment will be displayd) 
 
-git stash pop ----> it will reapply the file changes which are saved in that stash list & move the files to working area but that saved stash's which are poped will be deleted from stash list (only picks recent stash by default)
+git stash pop ----> it will reapply the file changes which are saved in that stash list & move the files to working area but that saved stash's which are poped will be deleted from stash                     list (only picks recent stash by default)
 
 git stash pop <stash id>  ----> to reapply pictular stash in the stash list & that pictular saved stash's will be deleted from stash list
 
-git stash apply  ----> it will reapply the file changes which are saved in that stash list & move the files to working area but that saved stash's will not be deleted from stash list (only picks recent stash by default)
+git stash apply  ----> it will reapply the file changes which are saved in that stash list & move the files to working area but that saved stash's will not be deleted from stash list
+                       (only picks recent stash by default)
 
 git stash apply <stash id>  ----> to apply pictular stash in the stash list & that pictular saved stash's will not be deleted from stash list
 
@@ -300,7 +298,7 @@ git stash drop  ----> to delete recent stash from stash list. remember if you de
 
 git stash drop <stash id> ----> to delete pictular stash from stash list 
 
-git stash clear  ----> to delete/clear all stash's from stash list. remember if you delete/clear the stash, file changes saved in that stash will also be deleted & no longer applied on the files  
+git stash clear  ----> to delete/clear all stash's from stash list. remember if you delete/clear the stash, file changes saved in that stash will also be deleted & no longer applied on the                        files  
 
 git stash show -p  ----> to check/display the file changes saved in the recent stash (only picks recent stash by default)
 
@@ -338,14 +336,13 @@ git revert cce6456  ---->  when we use this all the file changes made on files a
  file1.txt  file2.txt                                                          1-line added in file2
 
 
-if you observe contents in file1.txt will be emty bcoz we added the some text "1-line added in file1"  in file1.txt at that commit "cce6456" so when we reverted to that commit file changes 
-made at that pictular commit has been removed and added files to new commit (efda361)
+- if you observe contents in file1.txt will be emty bcoz we added the some text "1-line added in file1"  in file1.txt at that commit "cce6456" so when we reverted to that commit file      changes made at that pictular commit has been removed and added files to new commit (efda361)
 
-here you can get doubt that at commit "cce6456" only file1.txt existed but not file2.txt if we revert to this commit file2.txt should not be present when we apply revert at "cce6456" git cannot delete the files only file existd at that pictular commit will be reverted and added to new commit 
+- here you can get doubt that at commit "cce6456" only file1.txt existed but not file2.txt if we revert to this commit file2.txt should not be present when we apply revert at "cce6456" git   cannot delete the files only file existd at that pictular commit will be reverted and added to new commit 
 
 
-generall we use revert when your repo is published in central repository then insted of using reset we use revert bcoz to avoide conflicts
-reset can be used only when your repo is in local & has been not published in  central repository (github or bitbucket)
+- generall we use revert when your repo is published in central repository then insted of using reset we use revert bcoz to avoide conflicts
+  reset can be used only when your repo is in local & has been not published in  central repository (github or bitbucket)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  cat file1.txt
 1-line added in file1
@@ -401,7 +398,7 @@ c5cafb7 irst line added file1
 3-line added in file1
 
 
---------------------------------------------------------------------------------GIT-HUB-------------------------------------------------------------------------------------------------------
+-----------------------------------------------GITHUB--------------------------------------------------------------------------------------------------------
 
 - Dont clone the remote repoistory into local where thers already an local repo existed
 
@@ -443,8 +440,8 @@ git remote  ---------> to view existing configured remote repo url alias name (o
 
 git remote -v  --------> to view existing configured remote repo url (display push & fetch remote url)
 
-git remote add origin <git remote url> --------> to add git repo remote url in local, here "origin" is alias name to your remote url we can customize it to any name if you like but most of them will keep it same
-                                                 when we clone a repo from github or other the default remote name setup is called "origin"
+git remote add origin <git remote url> --------> to add git repo remote url in local, here "origin" is alias name to your remote url we can customize it to any name if you like but most of 
+                                                 them will keep it same. when we clone a repo from github or other the default remote name setup is called "origin"
 
 git remote rename <old remote name>  <new remote name>  --------> to rename alias name of the url
 
@@ -455,27 +452,24 @@ git push <remote url alias>  <local branch name> --------> to push local branch 
 
 git push origin  <local branch name>:<remote branch name> --------> to push local branch commits to another branch in remote repo
                  (or)
-git push origin  master:feature-1 --------> we can also push commits of one branch in local to another branch in remote repo, here we are pushing "master" branch commits in local to "feature-1" branch in remote
-                 local   remote
+git push origin  master:feature-1 --------> we can also push commits of one branch in local to another branch in remote repo, here we are pushing "master" branch commits in local to                  local   remote              "feature-1" branch in remote
+                 
 
-git push -u <remote url alias> <branch name>   --------> this option allows you to push & to set upstream of the branch we want to push. its a link b/w your loacl branch & remote branch. Once we set upstream for local branch we can just use cmd "git push" as shorthand to push our local branch or its commits to remote 
-                                   local
-            (or)        
-git push -u origin  master  -------->  here "local master" branch has been pushed & linked/upstream to "remote master" branch so that when ever we use cmd "git push" all the local master commits will be directly pushed to master in remote
-                    local
+git push -u <remote url alias> <branch name>   --------> this option allows you to push & to set upstream of the branch we want to push. its a link b/w your loacl branch & remote branch
+                                                         once we set upstream for local branch we can just use cmd "git push" as shorthand to puch our local branch or its commits to remote 
+            (or)
+git push -u origin  master  -------->  here "local master" branch has been pushed & linked/upstream to "remote master" branch so that when ever we use cmd "git push" all the local master                                          commits will be directly pushed to master in remote
             (or)
 git branch --set-upstream-to=origin/<branch>  --------> only sets upstream we cannot push local branch or its commits using this cmd 
                                      local
+                               
 
+- once we set upstream using -u option, when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch    let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push -u origin feature-1" or git branch --set-upstream-to=origin/<branch>
 
-
-once we set upstream using -u option , when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push -u origin feature-1"  or "git branch --set-upstream-to origin <branch>"
-
-git push -u origin  feature-1:master -------->  we can push & set upstream of one branch in loacl to other branch in master. Here we pushed & set upstream b/w "local feature-1" branch & "remote master" so now when ever we do "git push" in "local feature-1" branch all the commits will be pushed to "remote master" branch.
-                     local    remote
-
+git push -u origin  feature-1:master -------->  we can push & set upstream of one branch in loacl to other branch in master. Here we pushed & set upstream b/w "local feature-1" branch &                         local    remote            "remote master" so now when ever we do "git push" in "local feature-1" branch all the commits will be pushed to "remote master" branch.                                                 
+                     
 git clone <remote url> -------> to clone remote repo to local
 
-By default when we create any repo in github a empty repo will be created without any branches, but when we add "ReadME file" while creating repo in github, abranch with the name "main" consisting with one single commit will be created which also know as "master branch". 
-if you want you can set any desired branch in your github repo as main/default, it can be done in settings section under Branches tab of repo.
-  
+- By default when we create any repo in github a empty repo will be created without any branches, but when we add "ReadME file" while creating repo in github,a branch with the name "main"    consisting with one single commit will be created which also know as "master branch". 
+
+- if you want you can set any desired branch in your github repo as main/default, it can be done in settings section under Branches tab of repo.
