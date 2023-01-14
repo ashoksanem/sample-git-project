@@ -458,14 +458,16 @@ git push origin  <local branch name>:<remote branch name> --------> to push loca
 git push origin  master:feature-1 --------> we can also push commits of one branch in local to another branch in remote repo, here we are pushing "master" branch commits in local to "feature-1" branch in remote
                  local   remote
 
-git push -u <remote url alias> <branch name>   --------> this option allows you to push & to set upstream of the branch we want to push. its a link b/w your loacl branch & remote branch
-                                                          once we set upstream for local branch we can just use cmd "git push" as shorthand to puch our local branch or its commits to remote 
-            (or)
+git push -u <remote url alias> <branch name>   --------> this option allows you to push & to set upstream of the branch we want to push. its a link b/w your loacl branch & remote branch. Once we set upstream for local branch we can just use cmd "git push" as shorthand to push our local branch or its commits to remote 
+                                   local
+            (or)        
 git push -u origin  master  -------->  here "local master" branch has been pushed & linked/upstream to "remote master" branch so that when ever we use cmd "git push" all the local master commits will be directly pushed to master in remote
-             (or)
-git --set-upstream-to origin <branch>  --------> works same as above
+                    local
+            (or)
+git branch --set-upstream-to=origin/<branch>  --------> only sets upstream we cannot push local branch or its commits using this cmd 
+                              local
 
-once we set upstream using -u option , when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push origin feature-1"
+once we set upstream using -u option , when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push -u origin feature-1"  or "git branch --set-upstream-to=origin/<branch>"
 
 git push -u origin  feature-1:master -------->  we can push & set upstream of one branch in loacl to other branch in master. Here we pushed & set upstream b/w "local feature-1" branch & "remote master" so now when ever we do "git push" in "local feature-1" branch all the commits will be pushed to "remote master" branch.
                      local    remote
