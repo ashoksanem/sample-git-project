@@ -463,7 +463,7 @@ git push -u <remote url alias> <branch name>   --------> this option allows you 
             (or)
 git push -u origin  master  -------->  here "local master" branch has been pushed & linked/upstream to "remote master" branch so that when ever we use cmd "git push" all the local master commits will be directly pushed to master in remote
              (or)
-git --set-upstream origin <branch>  --------> works same as above
+git --set-upstream-to origin <branch>  --------> works same as above
 
 once we set upstream using -u option , when we switched to other branch let's say "feature-1" & now if you do "git push" it throws error bcoz once the upstream is set/fixed to one branch let's say master we cannot do "git push" in other branch untill we reset it to new branch using "git push origin feature-1"
 
